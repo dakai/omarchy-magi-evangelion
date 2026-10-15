@@ -23,7 +23,7 @@ extra packages, no bar widget.
 ## Install
 
 ```sh
-omarchy plugin add https://github.com/OWNER/omarchy-magi.git --enable
+omarchy plugin add https://github.com/remulef/omarchy-magi.git --enable
 ```
 
 Japanese text uses **Noto Sans CJK JP** (shipped with Omarchy's `noto-fonts-cjk`).
