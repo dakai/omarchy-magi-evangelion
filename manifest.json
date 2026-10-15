@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "id": "fab.magi",
+  "id": "evangelion.magi",
   "name": "MAGI",
   "version": "1.0.0",
-  "author": "fab",
+  "author": "remulef",
   "license": "MIT",
   "description": "Evangelion MAGI deliberation screen on your desktop: MELCHIOR (CPU), BALTHASAR (RAM) and CASPER (battery) vote 承認/否決 by majority.",
   "kinds": [

@@ -72,7 +72,7 @@ Item {
       implicitHeight: 440
       color: "transparent"
 
-      WlrLayershell.namespace: "fab-magi"
+      WlrLayershell.namespace: "evangelion-magi"
       WlrLayershell.layer: WlrLayer.Bottom
       WlrLayershell.keyboardFocus: WlrKeyboardFocus.None
       exclusionMode: ExclusionMode.Ignore

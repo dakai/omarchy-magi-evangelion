@@ -38,7 +38,7 @@ Japanese text uses **Noto Sans CJK JP** (shipped with Omarchy's `noto-fonts-cjk`
 ## Remove
 
 ```sh
-omarchy plugin remove fab.magi
+omarchy plugin remove evangelion.magi
 ```
 
 Fan project, not affiliated with Khara or Gainax. Evangelion and MAGI belong to

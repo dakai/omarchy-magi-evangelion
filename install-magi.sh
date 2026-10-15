@@ -2,26 +2,30 @@
 # MAGI — Evangelion desktop widget for Omarchy
 # MELCHIOR (CPU), BALTHASAR (RAM) and CASPER (battery) vote 承認/否決 by majority.
 # Install:   bash install-magi.sh
-# Remove:    omarchy plugin remove fab.magi
+# Remove:    omarchy plugin remove evangelion.magi
 set -euo pipefail
 
 command -v omarchy >/dev/null || { echo "This needs Omarchy (https://omarchy.org)." >&2; exit 1; }
 
-DIR="$HOME/.config/omarchy/plugins/fab.magi"
+DIR="$HOME/.config/omarchy/plugins/evangelion.magi"
 mkdir -p "$DIR"
 echo "Installing MAGI into $DIR"
 
 cat > "$DIR/manifest.json" <<'MAGI_EOF'
 {
   "schemaVersion": 1,
-  "id": "fab.magi",
+  "id": "evangelion.magi",
   "name": "MAGI",
   "version": "1.0.0",
-  "author": "fab",
+  "author": "remulef",
   "license": "MIT",
-  "description": "Écran MAGI (Evangelion) sur le bureau : MELCHIOR=CPU, BALTHASAR=RAM, CASPER=batterie votent 承認/否決.",
-  "kinds": ["service"],
-  "entryPoints": { "service": "Service.qml" }
+  "description": "Evangelion MAGI deliberation screen on your desktop: MELCHIOR (CPU), BALTHASAR (RAM) and CASPER (battery) vote 承認/否決 by majority.",
+  "kinds": [
+    "service"
+  ],
+  "entryPoints": {
+    "service": "Service.qml"
+  }
 }
 MAGI_EOF
 
@@ -100,7 +104,7 @@ Item {
       implicitHeight: 440
       color: "transparent"
 
-      WlrLayershell.namespace: "fab-magi"
+      WlrLayershell.namespace: "evangelion-magi"
       WlrLayershell.layer: WlrLayer.Bottom
       WlrLayershell.keyboardFocus: WlrKeyboardFocus.None
       exclusionMode: ExclusionMode.Ignore
@@ -334,5 +338,12 @@ Item {
 MAGI_EOF
 
 omarchy plugin validate "$DIR"
-omarchy plugin enable fab.magi
+# the running shell only knows plugins it has scanned; make it see the new folder first
+omarchy-shell shell rescanPlugins >/dev/null 2>&1 || true
+enabled=0
+for _ in 1 2 3 4 5 6 7 8 9 10; do
+  if omarchy plugin enable evangelion.magi 2>/dev/null; then enabled=1; break; fi
+  sleep 1
+done
+(( enabled )) || { echo "Installed, but could not enable it: run 'omarchy plugin enable evangelion.magi'." >&2; exit 1; }
 echo "MAGI online. 承認 — open an empty workspace to see it."
