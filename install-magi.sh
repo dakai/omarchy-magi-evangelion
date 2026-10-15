@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# MAGI — Evangelion desktop widget for Omarchy
+# EVANGELION MAGI desktop widget for Omarchy
 # MELCHIOR (CPU), BALTHASAR (RAM) and CASPER (battery) vote 承認/否決 by majority.
 # Install:   bash install-magi.sh
 # Remove:    omarchy plugin remove evangelion.magi
@@ -15,7 +15,7 @@ cat > "$DIR/manifest.json" <<'MAGI_EOF'
 {
   "schemaVersion": 1,
   "id": "evangelion.magi",
-  "name": "MAGI",
+  "name": "EVANGELION MAGI desktop widget",
   "version": "1.0.0",
   "author": "remulef",
   "license": "MIT",

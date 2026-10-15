@@ -1,4 +1,4 @@
-# MAGI — Omarchy desktop widget
+# EVANGELION MAGI desktop widget
 
 The MAGI supercomputers from *Neon Genesis Evangelion*, deliberating over your
 system on the desktop.
