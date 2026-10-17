@@ -21,8 +21,10 @@ workspaces. Stats are read from `/proc` and `/sys` every 2 seconds; no extra
 packages.
 
 The `bar-widget` part shows `MAGI ▮▮▮ 可決`: one light per computer (lime when
-it approves, pulsing coral when it denies) and the resolution. Hover for the
-details, click to open the full MAGI screen as a popup. Place it with
+it approves, pulsing coral when it denies) and the resolution. Right click walks
+three views — full, then without 可決/否決, then the lights alone — and keeps the
+choice as `visual` in the widget's shell.json entry. Hover for the details, click
+to open the full MAGI screen as a popup. Place it with
 `omarchy bar move evangelion.magi --section right`.
 
 ## Install

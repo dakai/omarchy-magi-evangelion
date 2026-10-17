@@ -14,6 +14,26 @@ Panel {
   readonly property color denyColor: "#E46166"
   readonly property string fontFamily: bar ? bar.fontFamily : Style.font.family
 
+  // Vue de la barre : 0 = complète (MAGI ▮▮▮ 可決), 1 = sans la résolution,
+  // 2 = voyants seuls. Le clic droit fait le tour et le choix est retenu dans
+  // shell.json, comme pour les autres widgets (cf. omarchy.clock).
+  readonly property int visualMode: {
+    var v = Number(root.setting("visual", 0))
+    return isFinite(v) ? (Math.floor(v) % 3 + 3) % 3 : 0
+  }
+
+  function cycleVisual() {
+    var entry = { id: root.moduleName }
+    for (var key in root.settings) if (key !== "id") entry[key] = root.settings[key]
+    entry.visual = (visualMode + 1) % 3
+
+    // Appliqué localement d'abord, pour que la vue change au clic même si
+    // l'écriture shell.json est refusée ; elle revient par la barre sinon.
+    root.settings = entry
+    if (root.bar && root.bar.shell && typeof root.bar.shell.updateEntryInline === "function")
+      root.bar.shell.updateEntryInline(root.moduleName, entry)
+  }
+
   property real pulse: 1.0
   SequentialAnimation on pulse {
     running: !stats.cpuOk || !stats.ramOk || !stats.batteryOk
@@ -40,7 +60,11 @@ Panel {
                  + "\nBALTHASAR•2 RAM " + Math.round(stats.ram) + "% " + (stats.ramOk ? "承認" : "否決")
                  + "\nCASPER•3 BATT " + (stats.battery < 0 ? "N/A" : stats.battery + "%") + " " + (stats.batteryOk ? "承認" : "否決")
                  + "\n決議 : " + (stats.passed ? "可決" : "否決") + "  " + stats.votes + " / 3"
-    onPressed: function(b) { root.toggle() }
+                 + "\nclic droit : vue " + (root.visualMode + 1) + " / 3"
+    onPressed: function(b) {
+      if (b === Qt.RightButton) root.cycleVisual()
+      else root.toggle()
+    }
 
     Grid {
       id: content
@@ -54,7 +78,7 @@ Panel {
       horizontalItemAlignment: Grid.AlignHCenter
 
       Text {
-        visible: !(root.bar && root.bar.vertical)
+        visible: root.visualMode < 2 && !(root.bar && root.bar.vertical)
         text: "MAGI"
         color: root.orange
         font.family: root.fontFamily
@@ -77,6 +101,7 @@ Panel {
       }
 
       Text {
+        visible: root.visualMode === 0
         text: stats.passed ? "可決" : "否決"
         color: stats.passed ? root.okColor : root.denyColor
         font.family: "Noto Sans CJK JP"
