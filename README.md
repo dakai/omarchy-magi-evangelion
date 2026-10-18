@@ -1,9 +1,9 @@
-# EVANGELION MAGI desktop widget
+# EVANGELION MAGI bar widget
 
 The MAGI supercomputers from *Neon Genesis Evangelion*, deliberating over your
-system on the desktop and in the bar.
+system in the bar.
 
-![MAGI on the desktop](preview.png)
+![The MAGI screen in the popup](preview.png)
 
 | Computer | Watches | Votes 承認 (approve) when… |
 |---|---|---|
@@ -15,10 +15,7 @@ A computer that votes **否決** (deny) turns coral and pulses. The resolution i
 decided by majority, like the real MAGI: two votes or more and the banner reads
 **決議 : 可決**, otherwise **否決**.
 
-The `service` part draws one transparent, click-through window on the `bottom`
-layer — above the wallpaper, below your windows — so it shows on empty
-workspaces. Stats are read from `/proc` and `/sys` every 2 seconds; no extra
-packages.
+Stats are read from `/proc` and `/sys` every 2 seconds; no extra packages.
 
 The `bar-widget` part shows `MAGI ▮▮▮ 可決`: one light per computer (lime when
 it approves, pulsing coral when it denies) and the resolution. Right click walks
@@ -37,7 +34,6 @@ Japanese text uses **Noto Sans CJK JP** (shipped with Omarchy's `noto-fonts-cjk`
 
 ## Customize
 
-- Position: `margins { top; left }` in `Service.qml`.
 - Thresholds: `cpuOk`, `ramOk`, `batteryOk` in `MagiStats.qml`.
 - Colors: the palette at the top of `MagiView.qml` / `MagiPanel.qml`
   (EVA-01 lime `#86E33F`, coral `#E46166`, NERV orange `#F08A5D`).

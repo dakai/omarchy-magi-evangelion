@@ -1,17 +1,15 @@
 {
   "schemaVersion": 1,
   "id": "evangelion.magi",
-  "name": "EVANGELION MAGI desktop widget",
+  "name": "EVANGELION MAGI bar widget",
   "version": "1.1.0",
   "author": "remulef",
   "license": "MIT",
-  "description": "Evangelion MAGI deliberation screen on your desktop and in the bar: MELCHIOR (CPU), BALTHASAR (RAM) and CASPER (battery) vote 承認/否決 by majority.",
+  "description": "Evangelion MAGI deliberation in the bar: MELCHIOR (CPU), BALTHASAR (RAM) and CASPER (battery) vote 承認/否決 by majority, and the full MAGI screen opens in the popup.",
   "kinds": [
-    "service",
     "bar-widget"
   ],
   "entryPoints": {
-    "service": "Service.qml",
     "barWidget": "BarWidget.qml"
   },
   "barWidget": {

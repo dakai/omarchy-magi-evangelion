@@ -20,7 +20,7 @@ Item {
   readonly property color denyColor: "#E46166"
   readonly property bool passed: votes >= 2
 
-  // fond lisible par-dessus le ciel du fond d'écran
+  // fond lisible dans le popup de la barre
   Rectangle {
     anchors.fill: parent
     color: Qt.rgba(23 / 255, 17 / 255, 42 / 255, 0.78)

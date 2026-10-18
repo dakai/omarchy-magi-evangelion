@@ -3,7 +3,8 @@ import qs.Commons
 import qs.Ui
 
 // Widget de barre MAGI : un voyant par ordinateur (MELCHIOR, BALTHASAR, CASPER)
-// et la résolution 可決 / 否決. Clic gauche = écran MAGI complet.
+// et la résolution 可決 / 否決. Clic gauche = écran MAGI complet (popup),
+// clic droit = vue réduite.
 Panel {
   id: root
   moduleName: "evangelion.magi"

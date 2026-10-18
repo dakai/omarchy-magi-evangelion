@@ -1,8 +1,8 @@
 import QtQuick
 import Quickshell.Io
 
-// Lecture des mesures pour les trois ordinateurs MAGI, partagée par l'écran
-// du bureau et le widget de barre. Une lecture de /proc et /sys toutes les 2 s.
+// Lecture des mesures pour les trois ordinateurs MAGI, pour le widget de barre.
+// Une lecture de /proc et /sys toutes les 2 s.
 // MELCHIOR•1 = CPU, BALTHASAR•2 = RAM, CASPER•3 = batterie ; vote à la majorité.
 Item {
   id: root
